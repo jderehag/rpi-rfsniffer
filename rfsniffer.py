@@ -30,10 +30,15 @@ import argparse
 import os
 import shelve
 import time
+import warnings
 
-import RPi.GPIO as GPIO
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
+try:
+    import RPi.GPIO as GPIO
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BOARD)
+except RuntimeError:
+    # Catch here so that we can actually test on non-pi targets
+    warnings.warn('This can only be executed on Raspberry Pi', RuntimeWarning)
 
 
 def play(args, buttons):

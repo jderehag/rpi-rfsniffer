@@ -90,9 +90,8 @@ def main():
 
     subparsers = parser.add_subparsers(help='sub-command help')
 
-    parser.add_argument('-v', '--verbose', dest='verbose',
-                        action='store_true', default=False,
-                        help='Verbose output')
+    parser.add_argument('-v', '--verbose', dest='verbose', action='store_true',
+                        default=False, help='Verbose output')
 
     parser.add_argument('--rxpin', type=int, default=13,
                         help=('The RPi boardpin where the RF receiver'

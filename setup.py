@@ -37,7 +37,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='rpi-rfsniffer',
-    version='1.0.0',
+    version='0.1.0',
     description='RF remote sniffer and sender for the Raspberry Pi',
     long_description=long_description,
     url='https://github.com/jderehag/rpi-rfsniffer',

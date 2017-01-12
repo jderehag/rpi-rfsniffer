@@ -41,17 +41,18 @@ except RuntimeError:
     warnings.warn('This can only be executed on Raspberry Pi', RuntimeWarning)
 
 
-def play(args, buttons):
+def play(args, buttonsdb):
     GPIO.setup(args.txpin, GPIO.OUT, initial=GPIO.LOW)
-    for i, (timing, level) in enumerate(buttons[args.button]):
-        if i is not 0:
-            # Busy-sleep (gives a better time granularity than
-            # sleep() but at the cost of busy looping)
-            now = time.time()
-            while now + timing > time.time():
-                pass
+    for button in args.button:
+        for i, (timing, level) in enumerate(buttonsdb[button]):
+            if i is not 0:
+                # Busy-sleep (gives a better time granularity than
+                # sleep() but at the cost of busy looping)
+                now = time.time()
+                while now + timing > time.time():
+                    pass
 
-        GPIO.output(args.txpin, level)
+            GPIO.output(args.txpin, level)
 
 
 def read_timings(rx_pin):
@@ -114,7 +115,7 @@ def main():
     # Play subcommand
     parser_play = subparsers.add_parser('play', help=('Send a previously '
                                                       'recorded RF signal'))
-    parser_play.add_argument('button')
+    parser_play.add_argument('button', nargs='*')
     parser_play.set_defaults(func=play)
 
     # Dump subcommand

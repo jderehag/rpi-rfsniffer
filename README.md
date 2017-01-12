@@ -31,8 +31,8 @@ $>rfsniffer record remotename.button1
   Recorded 64 bit transitions
 $>
 
-# To transmit/send that signal
-$>rfsniffer play remotename.button1
+# To transmit/send that signal (twice)
+$>rfsniffer play remotename.button1 remotename.button1
 $>
 
 # To dump all the recorded signals

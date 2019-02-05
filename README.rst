@@ -52,7 +52,7 @@ Hardware guide
 All pin assignments refer to board numbers (rather than chipset pin layout).
 Allthough it has only been tested on RPi2, according to `RPi doc
 <https://www.raspberrypi.org/documentation/usage/gpio/>`_ all boards should be pin compatible.
-Worth mentioning is that it is working in pull-down resistor mode. But this should not make any difference for rfsniffer since it simply reads any edge transitions and does not really care about the line level itself.
+Worth mentioning is that it is assuming soft pull-down resistor mode for all recordings, so you should avoid GPIO pins 2-3 since these have fixed pull-up resistors.
 
 
 ######################
